@@ -4,8 +4,15 @@ var router = express.Router();
 var querystring = require('querystring');
 var request = require('request'); // "Request" library
 require('dotenv').config();
-var client_id="YOUR_CLIENT_ID";
-var client_secret="YOUR_CLIENT_SECRET";
+
+const client_id = process.env.CLIENT_ID;
+const client_secret = process.env.CLIENT_SECRET;
+let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:3000/callback';;
+const PORT = process.env.PORT || 3000;
+
+if (process.env.NODE_ENV !== 'production') {
+  redirect_uri = 'http://localhost:3000/callback';
+}
 
 
 // Point to HTML file
@@ -14,7 +21,7 @@ router.get('/', function(req, res, next) {
 });
 
 // LOGIN FUNCTIONALITY ---------------------------------------------------
-var redirect_uri = 'http://localhost:3000/callback'; // Your redirect uri
+// var redirect_uri = 'http://localhost:3000/callback'; // Your redirect uri
 var stateKey = 'spotify_auth_state';
 
 router.get('/login', function(req, res) {
