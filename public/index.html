@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+  <title>Jukebox</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/brands.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href="stylesheets/style.css">
+    <script defer src="/public/javascripts/fontawesome.js"></script>
+</head>
+
+<!-- A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. -->
+
+<body ng-app="app">
+  <div>
+    <div id="login" class="text-center">
+      <h1 class="clearfix header">Welcome to Jukebox</h1>
+      <a href="/login" class="btn btn-green btn-success" id="loginBtn">Log in to Spotify</a>
+    </div>
+    <div id="loggedin">
+        <div id ="navBar" class="sidenav" ng-controller="sidenav">
+            <a href="https://github.com/truleehersh/" target="_blank" id="spotifyLogo"><i class="solid fab fa-spotify"></i></a>
+            <div id="sidemenu">
+                <a routerLink="" ng-click="navChanged('profile')" id="profileNav" class="navItem icon solid fa-user"></br><span>Profile</span></a>
+                <a routerLink="" ng-click="navChanged('artists')" id="artistsNav" class="navItem icon solid fa-music"></br><span>Top Artists</span></a>
+                <a routerLink="" ng-click="navChanged('tracks')" id="tracksNav" class="navItem icon solid fa-compact-disc"></br><span>Top Tracks</span></a>
+                <a routerLink="" ng-click="navChanged('recent')" id="recentNav" class="navItem icon solid fa-history"></br><span>Recent</span></a>
+                <a routerLink="" ng-click="navChanged('playlists')" id="playlistsNav" class="icon solid fa-sliders-h"></br><span>Playlists</span></a>
+            </div>
+            <a href="https://github.com/truleehersh/" target="_blank" id="github"><i class="solid fab fa-github"></i></a>
+        </div>
+        <div id="mainContent">
+            <div id="profile">
+                <div id="user" ng-controller="user">
+                    <div class="media-body">
+                        <div>
+                            <img class="media-object" src="{{imageUrl}}" />
+                            <h1 class="clearfix header" id="username">{{displayName}}</h1>
+                        </div>  
+                        <a class="btn btn-green btn-success" target="_blank" href="{{spotifyLink}}">Open Spotify</a>
+                        <a class="btn btn-bw"href="/">Logout</a>
+                    </div>    
+                </div>
+                <div id="previews" class="float-container">
+                    <div class="previewTable" id="topArtists" ng-controller="artistsPrev">
+                        <p class="header tableHeader">Top Artists</p>
+                        <ul class="container-fluid post" >
+                            <li class="previewItem" ng-repeat="artist in artists">
+                                <table>
+                                    <tr>
+                                        <td><a target="_blank" href="{{artist.external_urls.spotify}}"><img ng-src="{{artist.images[0].url}}" class="img artistImg"></a></td>
+                                        <td><a target="_blank" class="itemName" href="{{artist.external_urls.spotify}}">{{artist.name}}</a> </td>
+                                    </tr>
+                                </table>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="previewTable" id="topTracks" ng-controller="tracksPrev">
+                        <p class="header tableHeader">Top Tracks</p>
+                        <ul class="container-fluid post" >
+                            <li class="previewItem"ng-repeat="track in tracks">
+                                <a class="trackBlock" target="_blank" href="{{track.external_urls.spotify}}">
+                                    <table>
+                                        <tr>
+                                            <td><img ng-src="{{track.album.images[2].url}}" class="img"></td>
+                                            <td><ul class="trackInfo">
+                                                <li class="itemName trackName">{{track.name}}</li>
+                                                <li class="itemName trackArtist">{{track.artists[0].name}}  •  {{track.album.name}}  •  {{millisToMinutesAndSeconds(track.duration_ms)}}</li>
+                                            </ul></td>
+                                        </tr>
+                                    </table>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="artists" ng-controller="artists">
+                <p class="main header">Top Artists</p>
+                <div class="imageTable">
+                    <div ng-repeat="artist in artists" class="imageItem">
+                        <a target="_blank" href="{{artist.external_urls.spotify}}"><img ng-src="{{artist.images[0].url}}" class="artistImg bigImage"></a>
+                        <a target="_blank" class="itemName" href="{{artist.external_urls.spotify}}">{{artist.name}}</a> 
+                    </div>
+                </div>
+            </div>
+            <div id="tracks" ng-controller="tracks">
+                <p class="main header">Top Tracks</p>
+                <div class="fullTable" id="topArtists" ng-controller="artistsPrev">
+                    <ul class="container-fluid post" >
+                        <li class="previewItem"ng-repeat="track in tracks">
+                            <a class="trackBlock" target="_blank" href="{{track.external_urls.spotify}}">
+                                <table>
+                                    <tr>
+                                        <td><img ng-src="{{track.album.images[2].url}}" class="img"></td>
+                                        <td><ul class="trackInfo">
+                                            <li class="itemName trackName">{{track.name}}</li>
+                                            <li class="itemName trackArtist">{{track.artists[0].name}}  •  {{track.album.name}}  •  {{millisToMinutesAndSeconds(track.duration_ms)}}</li>
+                                        </ul></td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="recent" ng-controller="recent">
+                <p class="main header">Recently Played Tracks</p>
+                <div class="fullTable" id="topArtists" ng-controller="artistsPrev">
+                    <ul class="container-fluid post" >
+                        <li class="previewItem"ng-repeat="song in songs">
+                            <a class="trackBlock" target="_blank" href="{{song.track.external_urls.spotify}}">
+                                <table>
+                                    <tr>
+                                        <td><img ng-src="{{song.track.album.images[2].url}}" class="img"></td>
+                                        <td><ul class="trackInfo">
+                                            <li class="itemName trackName">{{song.track.name}}</li>
+                                            <li class="itemName trackArtist">{{song.track.artists[0].name}}  •  {{song.track.album.name}}  •  {{millisToMinutesAndSeconds(song.track.duration_ms)}}</li>
+                                        </ul></td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="playlists" ng-controller="playlists">
+                <p class="main header">Your Playlists</p>
+                <div class="imageTable">
+                    <div ng-repeat="list in playlists" class="imageItem">
+                        <a target="_blank" href="{{list.external_urls.spotify}}"><img ng-src="{{list.images[0].url}}" class="bigImage"></a>
+                        <a target="_blank" class="itemName" href="{{list.external_urls.spotify}}">
+                            <ul class="trackInfo">
+                                <li class="itemName trackName">{{list.name}}</li>
+                                <li class="itemName trackArtist">{{list.tracks.total}} TRACKS</li>
+                            </ul>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="javascripts/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+/* @import url(all.css); */
+
+body {
+    background-color: rgb(26, 26, 26);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    /* line-height: 1.875; */
+    margin: 0;
+  }
+  
+  #controller {
+      text-align: center;
+  }
+  
+  img {
+      margin-bottom: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+  li {
+    list-style-type: none;
+  }
+  
+  .btn-bw {
+    border-radius: 6em;
+    font-weight: 800;
+    font-size: 1em;
+    letter-spacing: .15em;
+    padding: 1em 2em 1em 2em;
+    border: 1px solid white;
+    color: white;
+    transition-duration: .5s;
+    text-transform: uppercase;
+    margin-bottom: .5em;
+  }
+
+  .btn-bw:hover {
+    background-color: white;
+    color: black;
+  } 
+
+  .btn-green {
+    border-radius: 6em;
+    font-weight: 800;
+    font-size: 1em;
+    letter-spacing: .15em;
+    padding: 1em 2em 1em 2em;
+    background-color: rgb(30, 215, 96);
+    transition-duration: .5s;
+    text-transform: uppercase;
+    margin-bottom: .5em;
+  }
+
+  .btn-green:hover {
+    background-color: rgb(31, 172, 80);
+  }
+  
+  #login{
+    margin-top: 25rem;
+    font-weight: 800;
+  }
+
+  #loginBtn {
+    margin-top: 1rem;
+  }
+
+  #loggedin #login {
+    display: none;
+  }
+
+  .text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 500px;
+  }
+
+  .media-body {
+    text-align: center;
+    margin-top: 18em;
+  }
+
+  .media-body .btn-green {
+    font-size: .75em;
+  }
+
+  .media-body .btn-bw {
+    font-size: .75em;
+  }
+
+  #user {
+    text-align: center;
+    align-items: center;
+    margin-bottom: 4em;
+  }
+
+  #user img {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    max-height: 20rem;
+  }
+
+ .header {
+    text-transform: none;
+    font-weight: 800;
+    font-size:4rem;
+    margin-bottom: 1rem;
+    
+  }
+
+  .main {
+    margin-top: 10vh;
+    margin-bottom: 5rem;
+    /* margin-left: 4vw; */
+    font-size: 3rem;
+    font-weight: 800;
+  }
+
+  #user .header {
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: 800px) {
+    #user .header {
+      font-size: 3rem;
+    }
+    .main { text-align: center; margin-top:15rem}
+  }
+
+  /* --------------------------------------------- */
+  .sidenav {
+    height: 100%;
+    width: 10rem;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(26, 26, 26);
+    color:  rgb(173, 173, 173);
+    overflow-x: hidden;
+    text-align: center;
+  }
+
+  #sidemenu {
+    padding-top: 17rem;
+  }
+  
+  .sidenav a {
+    padding-top: 1.5em;
+    text-decoration: none;
+    font-size: 2.7rem;
+    color: rgb(173, 173, 173);
+    display: block;
+    line-height: 2rem;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  .sidenav a span {
+    font-size: 1rem;
+  }
+
+  #github {
+    position:absolute;
+    left: 35%;
+    bottom:2rem;
+    text-align: center;
+  }
+  
+  #spotifyLogo {
+    color:rgb(30, 215, 96);
+    font-size: 4rem;
+  }
+  
+ #mainContent {
+    margin-left: 20rem; 
+    margin-right: 20rem;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .sidenav { width: 100%;
+      height: auto;
+      position: relative;
+      padding-top: 0;
+      padding-right: 1.5rem;
+      padding-top: 3rem;
+      position: fixed;
+      display: block;
+    }
+    .sidenav a {
+      font-size: 2rem; 
+      width: 18%;
+      display: inline-block;
+      text-align: center;
+      padding-top: 0;
+    }
+    #sidemenu {
+      padding-top: 0;
+    }
+    #mainContent {
+      margin-top: 7rem;
+      margin-left: 0; 
+      margin-right: 0;
+    }
+    #github { display: none;}
+    #spotifyLogo { display: none;}
+  }
+  
+  @media screen and (max-width: 300px) {
+    .sidenav a {
+      text-align: center;
+      float: none;
+    }
+  }
+
+  /* Icon */
+
+.icon {
+  text-decoration: none;
+  border-bottom: none;
+  position: relative;
+  list-style: none;
+  color:  rgb(173, 173, 173);;
+}
+
+  .icon:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    text-transform: none !important;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 400;
+  }
+
+  .icon:before {
+      line-height: inherit;
+  }
+
+  .icon.solid:before {
+      font-weight: 900;
+  }
+
+
+/* ------------------------------ */
+
+.tableHeader {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.artistImg {
+  border-radius: 50%;
+  
+}
+
+.img {
+  width: 6rem;
+  height: 6rem;
+  margin-right: 4rem;
+}
+
+#previews {
+  align-items: center;
+
+}
+
+.previewTable {
+  width: 50%;
+  float: left;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+  .previewTable {
+    margin-left: 2rem;
+    padding-right: 2rem;
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+
+.previewItem {
+  margin-bottom: .5em;
+}
+
+.trackInfo {
+  vertical-align: middle;
+  padding: 0 0 0 0;
+  /* display: table-cell; */
+  /* max-width: 25em; */
+}
+
+.trackInfo li{
+  line-height: 2rem;
+  word-wrap: break-word;
+}
+
+.itemName {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 0rem;
+}
+
+.trackArtist {
+  font-size: 1.25rem;
+  color: rgb(173, 173, 173);
+}
+
+.trackArtist:hover {
+  color: rgb(173, 173, 173);
+  text-decoration: none;
+}
+
+.trackBlock:hover {
+  text-decoration: none;
+}
+
+.trackName:hover {
+  text-decoration: underline;
+}
+
+
+/* ----------------------- */
+.imageTable {
+  display: block;
+  text-align: center;
+  align-items: center;
+  margin-top: 2em;
+  line-height: 1.95rem;
+}
+
+.imageItem {
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 6rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  max-width: 27rem;
+}
+
+.imageItem img {
+  margin-bottom: 2.5rem;
+  background-color: grey;
+  text-align: center;
+  margin-left: auto;
+	margin-right: auto;
+	display: block;
+  width: 25rem;
+  height: 25rem;
+  transition-duration: .5s;
+}
+
+.imageItem img:hover{
+  opacity:.5;
+}
+
+.imageItem .itemName {
+  display: block;
+  line-height: 1.95rem;
+}
